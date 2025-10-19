@@ -33,7 +33,12 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 221 83% 53%;
 
-    --radius: 0.5rem;
+    /* Radii */
+    --radius: 0.75rem;
+
+    /* Shadows */
+    --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.06);
+    --shadow-card-hover: 0 8px 24px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(15, 23, 42, 0.06);
   }
 
   .dark {
@@ -64,13 +69,39 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 48%;
+
+    /* Shadows (dark) */
+    --shadow-card: 0 1px 2px rgba(2, 6, 23, 0.6), 0 1px 3px rgba(2, 6, 23, 0.5);
+    --shadow-card-hover: 0 8px 24px rgba(2, 6, 23, 0.6), 0 4px 12px rgba(2, 6, 23, 0.5);
   }
 
   * {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground antialiased motion-safe:scroll-smooth;
+    @apply bg-background text-foreground antialiased motion-safe:scroll-smooth leading-relaxed;
+  }
+
+  /* Headings */
+  h1 {
+    @apply text-4xl font-bold tracking-tight sm:text-5xl;
+  }
+  h2 {
+    @apply text-3xl font-semibold tracking-tight sm:text-4xl;
+  }
+  h3 {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+  h4 {
+    @apply text-xl font-medium;
+  }
+
+  /* Links */
+  a {
+    @apply text-primary underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+  a:hover {
+    @apply underline;
   }
 
   /* Respect reduced motion */
@@ -87,5 +118,11 @@
 @layer utilities {
   .container-px {
     @apply px-4 sm:px-6 lg:px-8;
+  }
+  .container-responsive {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .section-y {
+    @apply py-16 sm:py-20;
   }
 }
