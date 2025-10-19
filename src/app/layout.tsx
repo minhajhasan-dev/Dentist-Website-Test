@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { GeistSans } from 'geist/font/sans'
-import { MotionConfig } from 'framer-motion'
+import { Providers } from './providers'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
@@ -59,7 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} ${GeistSans.className} min-h-screen bg-background text-foreground`}>
         <a href="#content" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-primary text-primary-foreground px-3 py-2 rounded-md">Skip to content</a>
-        <MotionConfig reducedMotion="user">
+        <Providers>
           <TooltipProvider delayDuration={200}>
             <div className="flex min-h-screen flex-col">
               <Header />
@@ -69,7 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Footer />
             </div>
           </TooltipProvider>
-        </MotionConfig>
+        </Providers>
         <Script id="json-ld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </body>
     </html>
