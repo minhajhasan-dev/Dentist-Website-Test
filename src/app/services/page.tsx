@@ -16,8 +16,8 @@ export default function ServicesPage() {
   ]
 
   return (
-    <div className="container-px mx-auto py-12">
-      <h1 className="mb-6 text-3xl font-bold">Our Services</h1>
+    <div className="container-responsive section-y">
+      <h1 className="mb-6">Our Services</h1>
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
         {services.map((s, idx) => (
           <FadeInUp key={s.title} delay={idx * 0.05}>

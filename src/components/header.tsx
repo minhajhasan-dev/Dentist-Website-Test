@@ -22,7 +22,7 @@ const navItems = [
 export default function Header() {
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container-px mx-auto flex h-16 items-center justify-between">
+      <div className="container-responsive flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
           <Smile className="h-6 w-6 text-primary" aria-hidden="true" />
           <Link href="/" className="font-semibold">Dentist</Link>

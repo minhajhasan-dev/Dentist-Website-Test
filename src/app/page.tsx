@@ -4,17 +4,20 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { FadeInUp } from '@/components/motion/FadeInUp'
 import { StaggerContainer } from '@/components/motion/StaggerContainer'
+import { ViewportReveal } from '@/components/motion/ViewportReveal'
+import { HoverLift } from '@/components/motion/HoverLift'
 import Link from 'next/link'
 
 export default function HomePage() {
   return (
     <div>
-      <section className="container-px mx-auto grid gap-8 py-16">
+      <section className="container-responsive grid gap-8 section-y">
         <StaggerContainer className="grid gap-6 text-center">
           <FadeInUp>
-            <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl">
+            <h1 className="text-balance">
               Compassionate dental care for brighter smiles
             </h1>
           </FadeInUp>
@@ -39,31 +42,65 @@ export default function HomePage() {
         </StaggerContainer>
       </section>
 
-      <section aria-labelledby="features-title" className="container-px mx-auto grid gap-6 pb-16">
-        <h2 id="features-title" className="text-2xl font-semibold">What’s included</h2>
+      <section aria-labelledby="features-title" className="container-responsive grid gap-6 section-y">
+        <h2 id="features-title">What’s included</h2>
         <div className="grid gap-6 md:grid-cols-3">
           {['Accessible UI', 'Beautiful theme', 'Motion primitives'].map((title, i) => (
             <FadeInUp key={title} delay={0.1 * i}>
-              <Card>
-                <CardHeader>
-                  <CardTitle>{title}</CardTitle>
-                  <CardDescription>Ready-to-use building blocks</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground">
-                    <li>Shadcn UI components</li>
-                    <li>Tailwind CSS tokens</li>
-                    <li>Reduced-motion friendly</li>
-                  </ul>
-                </CardContent>
-              </Card>
+              <HoverLift className="rounded-lg">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>{title}</CardTitle>
+                    <CardDescription>Ready-to-use building blocks</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+                      <li>Shadcn UI components</li>
+                      <li>Tailwind CSS tokens</li>
+                      <li>Reduced-motion friendly</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </HoverLift>
             </FadeInUp>
           ))}
         </div>
       </section>
 
-      <section aria-labelledby="faq-title" className="container-px mx-auto grid gap-4 pb-16">
-        <h2 id="faq-title" className="text-2xl font-semibold">FAQ</h2>
+      <section aria-labelledby="demo-title" className="container-responsive grid gap-6 section-y">
+        <ViewportReveal>
+          <h2 id="demo-title">Modern primitives</h2>
+        </ViewportReveal>
+        <ViewportReveal delay={0.1}>
+          <Tabs defaultValue="overview">
+            <TabsList>
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="details">Details</TabsTrigger>
+            </TabsList>
+            <TabsContent value="overview">
+              <Card>
+                <CardContent className="pt-6">
+                  <p className="text-muted-foreground">This demo shows the themed Tabs component and a viewport-triggered reveal animation.</p>
+                </CardContent>
+              </Card>
+            </TabsContent>
+            <TabsContent value="details">
+              <Card>
+                <CardContent className="pt-6">
+                  <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+                    <li>Tabs from shadcn/ui</li>
+                    <li>ViewportReveal and HoverLift motion</li>
+                    <li>Accessible and reduced-motion friendly</li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </TabsContent>
+          </Tabs>
+        </ViewportReveal>
+      </section>
+
+      <section aria-labelledby="faq-title" className="container-responsive grid gap-4 section-y">
+        <h2 id="faq-title">FAQ</h2>
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1">
             <AccordionTrigger>Do you accept new patients?</AccordionTrigger>
@@ -78,8 +115,8 @@ export default function HomePage() {
         </Accordion>
       </section>
 
-      <section id="contact" aria-labelledby="contact-title" className="container-px mx-auto grid gap-4 pb-24">
-        <h2 id="contact-title" className="text-2xl font-semibold">Contact us</h2>
+      <section id="contact" aria-labelledby="contact-title" className="container-responsive grid gap-4 section-y">
+        <h2 id="contact-title">Contact us</h2>
         <Card>
           <CardContent className="pt-6">
             <form className="grid gap-4 sm:grid-cols-2">
