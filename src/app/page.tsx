@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { Input } from '@/components/ui/input'
@@ -7,62 +7,108 @@ import { Textarea } from '@/components/ui/textarea'
 import { FadeInUp } from '@/components/motion/FadeInUp'
 import { StaggerContainer } from '@/components/motion/StaggerContainer'
 import Link from 'next/link'
+import { Spotlight } from '@/components/magic-ui/Spotlight'
+import { GradientBlobs } from '@/components/magic-ui/GradientBlobs'
+import { RevealOnView } from '@/components/magic-ui/RevealOnView'
+import { ShimmerButton } from '@/components/magic-ui/ShimmerButton'
+import { BentoGrid, BentoCard } from '@/components/magic-ui/BentoGrid'
+import { WaveSeparator } from '@/components/magic-ui/WaveSeparator'
+import { StickyCTA } from '@/components/magic-ui/StickyCTA'
+import { ParallaxContainer } from '@/components/magic-ui/ParallaxContainer'
+import { HoverCardLift } from '@/components/magic-ui/HoverCardLift'
 
 export default function HomePage() {
   return (
     <div>
-      <section className="container-px mx-auto grid gap-8 py-16">
-        <StaggerContainer className="grid gap-6 text-center">
-          <FadeInUp>
-            <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl">
-              Compassionate dental care for brighter smiles
-            </h1>
-          </FadeInUp>
-          <FadeInUp delay={0.1}>
-            <p className="mx-auto max-w-2xl text-muted-foreground">
-              This is a scaffolded Next.js project with Tailwind CSS, shadcn/ui components, and Framer Motion animations.
-            </p>
-          </FadeInUp>
-          <FadeInUp delay={0.2}>
-            <div className="flex items-center justify-center gap-3">
-              <Button asChild>
-                <Link href="/services">View services</Link>
-              </Button>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant="outline">Book appointment</Button>
-                </TooltipTrigger>
-                <TooltipContent>Coming soon</TooltipContent>
-              </Tooltip>
-            </div>
-          </FadeInUp>
-        </StaggerContainer>
+      {/* Hero with spotlight and blobs */}
+      <section className="relative overflow-hidden pb-20 pt-28">
+        <GradientBlobs />
+        <Spotlight>
+          <div className="container-px mx-auto grid gap-8 text-center">
+            <ParallaxContainer strength={12} className="grid gap-6">
+              <FadeInUp>
+                <p className="text-sm font-semibold uppercase tracking-wider text-primary">Modern dental clinic</p>
+              </FadeInUp>
+              <FadeInUp>
+                <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-6xl">
+                  Compassionate care for brighter <span className="text-gradient">smiles</span>
+                </h1>
+              </FadeInUp>
+              <FadeInUp delay={0.1}>
+                <p className="mx-auto max-w-2xl text-muted-foreground">
+                  Magic UI primitives, shadcn/ui, and Tailwind theme tokens combined into a dribbble-inspired design.
+                </p>
+              </FadeInUp>
+              <FadeInUp delay={0.2}>
+                <div className="flex items-center justify-center gap-3">
+                  <ShimmerButton asChild className="rounded-full px-6">
+                    <Link href="/services">View services</Link>
+                  </ShimmerButton>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline" className="rounded-full">Book appointment</Button>
+                    </TooltipTrigger>
+                    <TooltipContent>Coming soon</TooltipContent>
+                  </Tooltip>
+                </div>
+              </FadeInUp>
+            </ParallaxContainer>
+          </div>
+        </Spotlight>
       </section>
 
-      <section aria-labelledby="features-title" className="container-px mx-auto grid gap-6 pb-16">
+      <WaveSeparator />
+
+      {/* Bento grid with glassy cards */}
+      <section aria-labelledby="features-title" className="container-px mx-auto grid gap-6 py-16">
         <h2 id="features-title" className="text-2xl font-semibold">What’s included</h2>
-        <div className="grid gap-6 md:grid-cols-3">
-          {['Accessible UI', 'Beautiful theme', 'Motion primitives'].map((title, i) => (
-            <FadeInUp key={title} delay={0.1 * i}>
-              <Card>
-                <CardHeader>
-                  <CardTitle>{title}</CardTitle>
-                  <CardDescription>Ready-to-use building blocks</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground">
-                    <li>Shadcn UI components</li>
-                    <li>Tailwind CSS tokens</li>
-                    <li>Reduced-motion friendly</li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </FadeInUp>
-          ))}
-        </div>
+        <BentoGrid>
+          <RevealOnView>
+            <BentoCard span="md:col-span-2" className="flex flex-col justify-between">
+              <div>
+                <h3 className="mb-2 text-xl font-semibold">Glassy cards</h3>
+                <p className="text-sm text-muted-foreground">Soft blur, subtle borders, and shadows.</p>
+              </div>
+              <div className="mt-6 h-24 rounded-lg bg-brand-gradient" />
+            </BentoCard>
+          </RevealOnView>
+          <RevealOnView delay={0.1}>
+            <HoverCardLift className="p-6">
+              <h3 className="mb-2 text-xl font-semibold">Wave separators</h3>
+              <p className="text-sm text-muted-foreground">Curved transitions between sections.</p>
+            </HoverCardLift>
+          </RevealOnView>
+          <RevealOnView delay={0.15}>
+            <BentoCard>
+              <h3 className="mb-2 text-xl font-semibold">Spotlight gradients</h3>
+              <p className="text-sm text-muted-foreground">Subtle stage-light background glow.</p>
+            </BentoCard>
+          </RevealOnView>
+          <RevealOnView delay={0.2}>
+            <BentoCard className="md:col-span-2">
+              <h3 className="mb-2 text-xl font-semibold">Animated primitives</h3>
+              <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+                <li>ScrollProgress</li>
+                <li>RevealOnView</li>
+                <li>ParallaxContainer</li>
+                <li>ShimmerButton</li>
+                <li>HoverCardLift</li>
+              </ul>
+            </BentoCard>
+          </RevealOnView>
+          <RevealOnView delay={0.25}>
+            <BentoCard>
+              <h3 className="mb-2 text-xl font-semibold">Bento layouts</h3>
+              <p className="text-sm text-muted-foreground">Composable grid spans and responsive design.</p>
+            </BentoCard>
+          </RevealOnView>
+        </BentoGrid>
       </section>
 
-      <section aria-labelledby="faq-title" className="container-px mx-auto grid gap-4 pb-16">
+      <WaveSeparator />
+
+      {/* FAQ */}
+      <section aria-labelledby="faq-title" className="container-px mx-auto grid gap-4 py-16">
         <h2 id="faq-title" className="text-2xl font-semibold">FAQ</h2>
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1">
@@ -78,9 +124,10 @@ export default function HomePage() {
         </Accordion>
       </section>
 
+      {/* Contact */}
       <section id="contact" aria-labelledby="contact-title" className="container-px mx-auto grid gap-4 pb-24">
         <h2 id="contact-title" className="text-2xl font-semibold">Contact us</h2>
-        <Card>
+        <Card className="glass rounded-xl">
           <CardContent className="pt-6">
             <form className="grid gap-4 sm:grid-cols-2">
               <div className="grid gap-2">
@@ -96,12 +143,14 @@ export default function HomePage() {
                 <Textarea id="message" name="message" rows={4} required />
               </div>
               <div>
-                <Button type="button">Send</Button>
+                <Button type="button" className="rounded-full">Send</Button>
               </div>
             </form>
           </CardContent>
         </Card>
       </section>
+
+      <StickyCTA />
     </div>
   )
 }

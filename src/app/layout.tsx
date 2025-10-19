@@ -8,6 +8,7 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Script from 'next/script'
 import type { ReactNode } from 'react'
+import { ScrollProgress } from '@/components/magic-ui/ScrollProgress'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} ${GeistSans.className} min-h-screen bg-background text-foreground`}>
+        <ScrollProgress />
         <a href="#content" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-primary text-primary-foreground px-3 py-2 rounded-md">Skip to content</a>
         <Providers>
           <TooltipProvider delayDuration={200}>
