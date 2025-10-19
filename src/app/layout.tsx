@@ -8,6 +8,8 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Script from 'next/script'
 import type { ReactNode } from 'react'
+import { site } from '@/lib/data/site'
+import { jsonLdOrganization } from '@/lib/seo'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,22 +23,22 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: {
-    default: 'Dentist Website Test',
-    template: '%s | Dentist Website Test',
+    default: site.organization.name,
+    template: `%s | ${site.organization.name}`,
   },
-  description: 'Modern dentist website scaffolded with Next.js, Tailwind CSS, shadcn/ui, and Framer Motion.',
-  keywords: ['Dentist', 'Dental Care', 'Next.js', 'Tailwind', 'shadcn', 'Framer Motion'],
+  description: 'Compassionate, modern dental care for brighter smiles in Springfield, CA.',
+  keywords: ['Dentist', 'Dental Care', 'Cleaning', 'Whitening', 'Implants', 'Invisalign'],
   openGraph: {
     type: 'website',
-    title: 'Dentist Website Test',
-    description: 'Modern dentist website scaffolded with Next.js, Tailwind CSS, shadcn/ui, and Framer Motion.',
+    title: site.organization.name,
+    description: 'Compassionate, modern dental care for brighter smiles in Springfield, CA.',
     url: '/',
-    siteName: 'Dentist Website Test',
+    siteName: site.organization.name,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dentist Website Test',
-    description: 'Modern dentist website scaffolded with Next.js, Tailwind CSS, shadcn/ui, and Framer Motion.',
+    title: site.organization.name,
+    description: 'Compassionate, modern dental care for brighter smiles in Springfield, CA.',
   },
   alternates: {
     canonical: '/',
@@ -44,17 +46,7 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'Dentist Website Test',
-    url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-    logo: '/logo.png',
-    sameAs: [
-      'https://www.facebook.com/',
-      'https://www.instagram.com/'
-    ]
-  }
+  const orgJsonLd = jsonLdOrganization()
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -71,7 +63,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </div>
           </TooltipProvider>
         </Providers>
-        <Script id="json-ld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <Script id="jsonld-org" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
       </body>
     </html>
   )

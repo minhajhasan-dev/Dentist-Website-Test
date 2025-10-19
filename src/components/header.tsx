@@ -16,7 +16,11 @@ import type { Route } from 'next'
 const navItems = [
   { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/about', label: 'About' },
+  { href: '/insurance', label: 'Insurance' },
+  { href: '/locations', label: 'Locations' },
+  { href: '/testimonials', label: 'Testimonials' },
+  { href: '/contact', label: 'Contact' },
 ]
 
 export default function Header() {
@@ -25,7 +29,7 @@ export default function Header() {
       <div className="container-responsive flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
           <Smile className="h-6 w-6 text-primary" aria-hidden="true" />
-          <Link href="/" className="font-semibold">Dentist</Link>
+          <Link href="/" className="font-semibold">BrightSide Dental Care</Link>
         </div>
         <div className="hidden md:block">
           <NavigationMenu>
