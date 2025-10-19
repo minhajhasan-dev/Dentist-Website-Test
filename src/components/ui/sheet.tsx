@@ -1,3 +1,5 @@
+'use client'
+
 import * as React from 'react'
 import { Drawer as SheetPrimitive } from 'vaul'
 import { X } from 'lucide-react'
