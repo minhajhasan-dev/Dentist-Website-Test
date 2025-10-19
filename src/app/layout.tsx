@@ -7,6 +7,7 @@ import { TooltipProvider } from '@/components/ui/tooltip'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Script from 'next/script'
+import type { ReactNode } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',

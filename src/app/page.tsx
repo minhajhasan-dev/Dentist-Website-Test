@@ -82,7 +82,7 @@ export default function HomePage() {
         <h2 id="contact-title" className="text-2xl font-semibold">Contact us</h2>
         <Card>
           <CardContent className="pt-6">
-            <form className="grid gap-4 sm:grid-cols-2" onSubmit={(e) => e.preventDefault()}>
+            <form className="grid gap-4 sm:grid-cols-2">
               <div className="grid gap-2">
                 <label htmlFor="name" className="text-sm font-medium">Name</label>
                 <Input id="name" name="name" autoComplete="name" required />
@@ -96,7 +96,7 @@ export default function HomePage() {
                 <Textarea id="message" name="message" rows={4} required />
               </div>
               <div>
-                <Button type="submit">Send</Button>
+                <Button type="button">Send</Button>
               </div>
             </form>
           </CardContent>
