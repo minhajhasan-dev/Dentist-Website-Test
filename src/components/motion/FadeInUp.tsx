@@ -1,17 +1,16 @@
 "use client"
 
 import { motion, useReducedMotion } from 'framer-motion'
-import type { HTMLAttributes, ReactNode } from 'react'
+import type { HTMLMotionProps } from 'framer-motion'
+import type { ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
-type Props = {
+ type Props = HTMLMotionProps<'div'> & {
   children: ReactNode
-  className?: string
   delay?: number
-  as?: keyof JSX.IntrinsicElements
-} & HTMLAttributes<HTMLElement>
+}
 
-export function FadeInUp({ children, className, delay = 0, as: Tag = 'div', ...props }: Props) {
+export function FadeInUp({ children, className, delay = 0, ...props }: Props) {
   const prefersReducedMotion = useReducedMotion()
 
   const variants = {
